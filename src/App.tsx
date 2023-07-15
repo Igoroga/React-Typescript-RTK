@@ -7,20 +7,27 @@ import WifiChekBox from './components/WifiChekBox';
 import SocialMediaTarif from './components/SocialMediaTarif';
 import { useAppDispatch, useAppSelector } from './hooks/redux';
 
-const Container = styled.div`
+const AppWrapper = styled.div`
   display: flex;
+  justify-content: center;
+`;
+
+const Container = styled.div`
   
-  margin: 2vh auto 0;
+  margin: 2vh auto; 
+  margin-left: 2vw;  
+  margin-right: 2vw; 
   max-width: 1000px;
   background-color: #F8F8F8;
   border: 2px solid #00BFFF;
   border-radius: 10px;
+  overflow: auto; /* Add scrollbars when necessary */
 `;
 
 const H1 = styled.h1`
   font-size: 36px;
   margin-top: 20px;
-  margin-left: 20px
+  margin-left: 20px;
 `;
 
 const Button = styled.button`
@@ -48,16 +55,16 @@ function App() {
   };
 
   return (
-    <Container>
-      <div className="App">
-      <H1>Настройте Тариф</H1>
+    <AppWrapper>
+      <Container>
+        <H1>Настройте Тариф</H1>
         <DataUser />
         <RangeTarif />
-        <WifiChekBox/>
-        <SocialMediaTarif/>
+        <WifiChekBox />
+        <SocialMediaTarif />
         <Button onClick={handlePayment}>Оплатить {totalCount} ₽</Button>
-      </div>
-    </Container>
+      </Container>
+    </AppWrapper>
   );
 }
 

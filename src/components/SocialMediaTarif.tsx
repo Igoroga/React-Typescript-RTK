@@ -38,6 +38,14 @@ const Image = styled.img`
   max-width: 80px;
   margin-right: 5px;
   cursor: pointer;
+
+  @media screen and (max-width: 768px) {
+    max-width: 60px;
+  }
+
+  @media screen and (max-width: 480px) {
+    max-width: 50px;
+  }
 `;
 
 const SocialMediaTarif = () => {

@@ -42,7 +42,7 @@ export const tarifSlice = createSlice({
         setSmsPrice(state, action: PayloadAction<number>) {
           state.tarifPrice.sms = action.payload;
         },
-        setCheckbox(state, action: PayloadAction<0 | 99 | 2600>) {
+        setCheckbox(state, action: PayloadAction<number>) {
           state.checkbox = action.payload;
         },
         setFacebook(state, action: PayloadAction<boolean>) {
@@ -83,6 +83,12 @@ export const tarifSlice = createSlice({
             if (state.socialMedia.tiktok) {
               totalCount += 60;
             }
+
+            if (state.checkbox === 99) {
+                totalCount += 99;
+              } else if (state.checkbox === 2700) {
+                totalCount += 2700;
+              }
           
             state.totalCount = totalCount;
           },

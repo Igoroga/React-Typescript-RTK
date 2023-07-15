@@ -1,5 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
+import { useAppDispatch, useAppSelector } from '../hooks/redux';
+import { tarifSlice } from '../store/reducers/tarifSlice';
 
 const Label = styled.label`
   font-weight: bold;
@@ -29,19 +31,49 @@ const Container = styled.div`
 `;
 
 const WifiChekBox = () => {
-  return (
-    <Container>
-      <Label>WI-FI роутер</Label>
-      <CheckboxContainer>
-        <CheckboxInput type="checkbox" id="rent" />
-        <CheckboxLabel htmlFor="rent">Аренда 99 ₽/мес</CheckboxLabel>
-      </CheckboxContainer>
-      <CheckboxContainer>
-        <CheckboxInput type="checkbox" id="buy" />
-        <CheckboxLabel htmlFor="buy">Выкупить 2600 ₽</CheckboxLabel>
-      </CheckboxContainer>
-    </Container>
-  );
-};
+    const dispatch = useAppDispatch();
+    const { checkbox } = useAppSelector((state) => state.tarifReducer);
 
-export default WifiChekBox;
+
+    const handleCheckboxChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        const checkboxId = event.target.id;
+        let checkboxValue = 0;
+    
+        if (checkboxId === 'rent') {
+          checkboxValue = 99;
+        } else if (checkboxId === 'buy') {
+          checkboxValue = 2700;
+        }
+    
+        dispatch(tarifSlice.actions.setCheckbox(checkboxValue));
+        dispatch(tarifSlice.actions.calculateTotalCount());
+        console.log(checkbox);
+        
+      };
+    
+      return (
+        <Container>
+          <Label>WI-FI роутер</Label>
+          <CheckboxContainer>
+            <CheckboxInput
+              type="checkbox"
+              id="rent"
+              checked={checkbox === 99}
+              onChange={handleCheckboxChange}
+            />
+            <CheckboxLabel htmlFor="rent">Аренда 99 ₽/мес</CheckboxLabel>
+          </CheckboxContainer>
+          <CheckboxContainer>
+            <CheckboxInput
+              type="checkbox"
+              id="buy"
+              checked={checkbox === 2700}
+              onChange={handleCheckboxChange}
+            />
+            <CheckboxLabel htmlFor="buy">Выкупить 2600 ₽</CheckboxLabel>
+          </CheckboxContainer>
+        </Container>
+      );
+    };
+    
+    export default WifiChekBox;

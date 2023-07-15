@@ -9,7 +9,7 @@ export interface ClientTarif {
       internet: number;
       sms: number;
     };
-    checkbox: 0 | 99 | 2600;
+    checkbox: number;
     socialMedia: {
       facebook: boolean;
       vk: boolean;

@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/React-Typescript-RTK/static/css/main.c77267cd.css",
+    "main.js": "/React-Typescript-RTK/static/js/main.bf9281ae.js",
+    "index.html": "/React-Typescript-RTK/index.html",
+    "main.c77267cd.css.map": "/React-Typescript-RTK/static/css/main.c77267cd.css.map",
+    "main.bf9281ae.js.map": "/React-Typescript-RTK/static/js/main.bf9281ae.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.c77267cd.css",
+    "static/js/main.bf9281ae.js"
+  ]
+}
